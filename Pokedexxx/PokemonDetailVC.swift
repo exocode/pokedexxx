@@ -12,11 +12,14 @@ class PokemonDetailVC: UIViewController {
 
     var pokemon: Pokemon!
     @IBOutlet weak var pokemonName: UILabel!
+    @IBOutlet weak var pokemonImage: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         pokemonName.text = pokemon.name.capitalizedString
+        pokemonImage.image = UIImage(named: "\(pokemon.pokedexId)")
+
         // Do any additional setup after loading the view.
     }
 
