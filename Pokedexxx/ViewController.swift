@@ -26,6 +26,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collection.delegate = self
         collection.dataSource = self
         searchBar.delegate = self
+        searchBar.enablesReturnKeyAutomatically = false
+        
+
+        // Write "Done / Fertig" in Keyboard instead of "Return"
+        searchBar.returnKeyType = UIReturnKeyType.Done
         
         initAudio()
         parsePokemonCSV()
@@ -134,10 +139,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    // when search button clicked
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    // behaviour when textDidChange in searchBar
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchBar.text == nil || searchBar.text == "" {
             inSearchMode = false
+            
+            // close the keyboard
+            view.endEditing(true)
+            
+            // reload the data
+            collection.reloadData()
         } else {
             
             inSearchMode = true
@@ -145,6 +162,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             // search every entry of pokemons array and take the name and by rangeOfString
             // it adds if
             filteredPokemon = pokemons.filter({$0.name.rangeOfString(searchTerm) != nil})
+            // dont forget to reload data
             collection.reloadData()
         }
     }
