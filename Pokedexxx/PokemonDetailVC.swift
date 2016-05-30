@@ -29,8 +29,12 @@ class PokemonDetailVC: UIViewController {
 
         pokemonName.text = pokemon.name.capitalizedString
         pokemonImage.image = UIImage(named: "\(pokemon.pokedexId)")
-
-        // Do any additional setup after loading the view.
+        
+        pokemon.downloadPokemonDetails { () -> () in
+            // this will be called after the download is done
+            // the magic are the closures "() -> () in"
+        }
+        
     }
 
     @IBAction func backButtonPressed(sender: AnyObject) {

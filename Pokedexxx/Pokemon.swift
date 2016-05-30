@@ -27,8 +27,6 @@ class Pokemon {
         return _name
     }
     
-    
-    
     var pokedexId: Int {
         return _pokedexId
     }
@@ -39,4 +37,9 @@ class Pokemon {
         
         _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self._pokedexId)"
     }
-}
+    
+    func downloadPokemonDetails(completed: DownloadComplete) {
+        // blsh
+    }
+    
+  }

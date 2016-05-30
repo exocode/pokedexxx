@@ -10,3 +10,7 @@ import Foundation
 
 let URL_BASE = "http://pokeapi.co"
 let URL_POKEMON = "/api/v1/pokemon/"
+
+
+// we created a closure which does not need a parameter, and does not return anything
+typealias DownloadComplete = () -> ()
