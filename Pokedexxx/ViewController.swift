@@ -101,9 +101,34 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    // whenever select an item
+    // whenever selected an item
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+        var poke: Pokemon!
+        
+        if inSearchMode {
+            poke = filteredPokemon[indexPath.row]
+        } else {
+            poke = pokemons[indexPath.row]
+        }
+        // we do the transition manually because we are passing DATA.
+        performSegueWithIdentifier("PokemonDetailVC", sender: poke)
+    }
+    
+    
+    // prepare the destination view controller
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PokemonDetailVC" {
+            // we assign detailsVC when the destinationController is a PokemonDetailVC
+            if let detailsVC = segue.destinationViewController as? PokemonDetailVC {
+                // if sender is a Pokemon ( we have done this by "performSegueWithIdentifier" in "didSelectAtIndexPath" ) assign it to poke
+                if let poke = sender as? Pokemon {
+                    // sticking the poke into the detailsViewController
+                    detailsVC.pokemon = poke
+                    
+                }
+            }
+        }
     }
     
     // how many items you wanna show
@@ -166,4 +191,5 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             collection.reloadData()
         }
     }
+
 }
