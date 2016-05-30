@@ -37,9 +37,22 @@
                                         <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="1" height="2"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-vd-sjF">
+                                        <rect key="frame" x="562" y="12" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="tqU-WT-MaX"/>
+                                            <constraint firstAttribute="width" constant="25" id="zfb-yx-i68"/>
+                                        </constraints>
+                                        <state key="normal" image="note"/>
+                                        <connections>
+                                            <action selector="playBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qIo-dc-V69"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.45794294328041069" blue="0.48748631474768489" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="YPf-vd-sjF" firstAttribute="centerY" secondItem="BGw-V1-glJ" secondAttribute="centerY" id="2Di-FL-5uP"/>
+                                    <constraint firstAttribute="trailing" secondItem="YPf-vd-sjF" secondAttribute="trailing" constant="10" id="2wC-Va-GTB"/>
                                     <constraint firstItem="haB-12-MuT" firstAttribute="centerX" secondItem="BGw-V1-glJ" secondAttribute="centerX" id="PVN-7o-93Q"/>
                                     <constraint firstAttribute="height" constant="50" id="sK2-Bm-sYo"/>
                                     <constraint firstItem="haB-12-MuT" firstAttribute="centerY" secondItem="BGw-V1-glJ" secondAttribute="centerY" id="yA1-l8-Rvp"/>
@@ -137,11 +150,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="260" y="449"/>
+            <point key="canvasLocation" x="109" y="329"/>
         </scene>
     </scenes>
     <resources>
         <image name="297" width="120" height="120"/>
         <image name="bg" width="1920" height="1200"/>
+        <image name="note" width="512" height="512"/>
     </resources>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -14,16 +15,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collection: UICollectionView!
     
     var pokemons = [Pokemon]()
+    var musicPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
         
+        initAudio()
         parsePokemonCSV()
     }
     
+    func initAudio() {
+        
+        let path = NSBundle.mainBundle().pathForResource("music", ofType: "mp3")!
     
+        do {
+            // we dont need var or let, because it's defined above
+            musicPlayer = try AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path))
+            musicPlayer.prepareToPlay()
+            musicPlayer.numberOfLoops = 10
+            musicPlayer.play()
+            
+        } catch let err as NSError {
+            
+            print(err.debugDescription)
+        }
+    }
     
     func parsePokemonCSV(){
         
@@ -42,14 +60,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 pokemons.append(poke)
             }
             
-            print(rows)
 
         } catch let err as NSError {
             print(err.debugDescription)
         }
         
     }
-    
     
     // everytime it needs a cell, we give it
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -62,13 +78,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             return cell
             
-        } else{
-            
+        } else {
             return UICollectionViewCell()
-            
         }
     }
-
     
     // whenever select an item
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -92,5 +105,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSizeMake(105, 105)
     }
     
-}
+    @IBAction func playBtnPressed(sender: UIButton!) {
 
+        if musicPlayer.playing {
+            musicPlayer.stop()
+            sender.alpha = 0.2
+        } else {
+            musicPlayer.play()
+            sender.alpha = 1.0
+        }
+    }
+}
