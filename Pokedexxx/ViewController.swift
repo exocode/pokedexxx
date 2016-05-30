@@ -77,7 +77,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // how many items you wanna show
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 718
+       return pokemons.count
         
     }
     
