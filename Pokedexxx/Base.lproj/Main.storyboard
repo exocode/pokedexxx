@@ -242,7 +242,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugu-VA-BH1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="48" id="QGC-Vs-4bu"/>
                                                         </constraints>
@@ -253,7 +253,7 @@
                                                         <size key="shadowOffset" width="1" height="1"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Grass / Psycho" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnG-A9-pmA">
-                                                        <rect key="frame" x="58" y="0.0" width="223" height="22"/>
+                                                        <rect key="frame" x="182" y="0.0" width="99" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -408,6 +408,9 @@
                                             <constraint firstAttribute="width" constant="42" id="7Qe-b6-Sbf"/>
                                         </constraints>
                                         <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="bob-LK-pzv" eventType="touchUpInside" id="pKP-sI-tFB"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU2-az-DJd">
                                         <rect key="frame" x="195" y="0.0" width="211" height="48"/>
@@ -474,8 +477,17 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="attackLabel" destination="87S-Ha-mYH" id="gki-Zf-yJD"/>
+                        <outlet property="currentEvoImg" destination="5hl-5m-RIT" id="Sqf-WX-o41"/>
+                        <outlet property="descriptionLabel" destination="Rcd-cz-fuU" id="wz6-K9-zVs"/>
+                        <outlet property="evoLabel" destination="ejy-L3-TwP" id="s35-gN-K7s"/>
+                        <outlet property="heightLabel" destination="cKG-2n-Vfd" id="6a6-LM-kRg"/>
+                        <outlet property="nextEvoImg" destination="JCB-lt-hjJ" id="nVx-3j-NSn"/>
+                        <outlet property="pokedexLabel" destination="xwX-UD-UL2" id="PWD-S3-eUL"/>
                         <outlet property="pokemonImage" destination="Mhm-ty-96X" id="xgh-7x-nhW"/>
                         <outlet property="pokemonName" destination="sU2-az-DJd" id="tuh-7m-2HN"/>
+                        <outlet property="typeLabel" destination="pnG-A9-pmA" id="A6S-T0-zKV"/>
+                        <outlet property="widthLabel" destination="EHw-Zj-cx0" id="WOj-IO-iTA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwI-C1-gfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
