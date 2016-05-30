@@ -13,11 +13,43 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var collection: UICollectionView!
     
+    var pokemons = [Pokemon]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
+        
+        parsePokemonCSV()
     }
+    
+    
+    
+    func parsePokemonCSV(){
+        
+        let path = NSBundle.mainBundle().pathForResource("pokemon", ofType: "csv")!
+        
+        do {
+            
+            let csv = try (CSV(contentsOfURL: path))
+            let rows = csv.rows
+            
+            for row in rows {
+                let pokeId = Int(row["id"]!)!
+                let pokeName = row["identifier"]!
+                let poke = Pokemon(name: pokeName, pokedexId: pokeId)
+                
+                pokemons.append(poke)
+            }
+            
+            print(rows)
+
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        
+    }
+    
     
     // everytime it needs a cell, we give it
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -25,7 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // take a unused cell and add our content
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokeCell", forIndexPath: indexPath) as? PokeCell {
             
-            let pokemon = Pokemon(name: "balh", pokedexId: indexPath.row)
+            let pokemon = pokemons[indexPath.row]
             cell.configureCell(pokemon)
             
             return cell
@@ -36,6 +68,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         }
     }
+
     
     // whenever select an item
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
