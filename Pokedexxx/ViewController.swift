@@ -22,10 +22,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // everytime it needs a cell, we give it
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
+        // take a unused cell and add our content
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokeCell", forIndexPath: indexPath) as? PokeCell {
+            
+            let pokemon = Pokemon(name: "balh", pokedexId: indexPath.row)
+            cell.configureCell(pokemon)
+            
             return cell
+            
         } else{
+            
             return UICollectionViewCell()
+            
         }
     }
     
@@ -36,7 +44,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // how many items you wanna show
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 30
+       return 718
         
     }
     
