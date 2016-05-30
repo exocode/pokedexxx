@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="NXV-NL-eXX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="NXV-NL-eXX">
                                 <rect key="frame" x="0.0" y="49" width="600" height="551"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGw-V1-glJ">
@@ -38,7 +38,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1nc-DW-0IO">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokeCell" id="1nc-DW-0IO" customClass="PokeCell" customModule="Pokedexxx" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="104"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -70,6 +70,10 @@
                                             <constraint firstAttribute="trailing" secondItem="qBk-Uf-gTC" secondAttribute="trailing" id="bdV-Rd-FqZ"/>
                                             <constraint firstItem="qBk-Uf-gTC" firstAttribute="centerX" secondItem="1nc-DW-0IO" secondAttribute="centerX" id="f9c-ZT-6ac"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="qBk-Uf-gTC" id="AzY-BG-oSm"/>
+                                            <outlet property="thumbImg" destination="KqS-EH-ezq" id="Rvg-XT-g9d"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -110,6 +114,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="yYx-ZT-vYT" id="ER2-sF-nef"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
